@@ -92,7 +92,7 @@ pipeline {
             steps {
                 script {
                     // Use withCredentials block to access the Secret File credential
-                    withCredentials([file(credentialsId: 'CONFIGURATION_SERVER_DOCKER_DEV_ENV', variable: 'SECRET_FILE_PATH')]) {
+                    withCredentials([file(credentialsId: 'LOGGER_SERVER_DOCKER_DEV_ENV', variable: 'SECRET_FILE_PATH')]) {
                         // SECRET_FILE_PATH contains the local file path where the secret file is stored
 
                         // Define the file path for the .envDev file
