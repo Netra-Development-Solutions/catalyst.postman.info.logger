@@ -33,7 +33,9 @@ const LogInfoSchema = new mongoose.Schema({
         required: true
     },
     transactionId: {
-        type: String
+        type: String,
+        required: true,
+        unique: true
     }
 }, {
     timestamps: true

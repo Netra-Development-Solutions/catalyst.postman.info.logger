@@ -84,7 +84,7 @@ const startServer = async () => {
         console.log('Created routers');
 
         const port = process.env.PORT || 3000;
-        if (process.env.NODE_ENV.toLowerCase() === 'dev') {
+        if (process.env.IP_ENABLED?.toLowerCase() === 'true') {
             app.listen(port, process.env.IP || '192.168.29.103', () => {
                 console.clear();
                 console.log(`Server started on ${process.env.IP}:${port}`);
