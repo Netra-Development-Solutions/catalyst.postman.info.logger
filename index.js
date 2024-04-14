@@ -47,8 +47,13 @@ app.use(express.urlencoded({ extended: true }));
 // Create table containg all routes
 var Table = require('cli-table');
 const writeEnvFile = require('./utils/writeEnvFile');
+const { successResponse } = require('./utils/response');
 var table = new Table({
     head: ['Method', 'Path', 'Description']
+});
+
+app.get('/', (req, res) => {
+    return successResponse(res, null, 'Logger Server is UP and Running!');
 });
 
 // Function to generate routers
@@ -79,10 +84,10 @@ const startServer = async () => {
         console.log('Created routers');
 
         const port = process.env.PORT || 3000;
-        if (process.env.NODE_ENV.toLowerCase() === 'dev') {
+        if (process.env.IP_ENABLED?.toLowerCase() === 'true') {
             app.listen(port, process.env.IP || '192.168.29.103', () => {
                 console.clear();
-                console.log(`Server started on port ${port}`);
+                console.log(`Server started on ${process.env.IP}:${port}`);
                 console.log(table.toString());
             });
         } else {
