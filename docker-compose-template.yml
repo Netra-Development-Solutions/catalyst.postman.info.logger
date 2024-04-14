@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  catalystbuild_configuration_server:
+    image: catalystbuild/postman.info.logger.server:latest
+    ports:
+      - "{HOST_IP}:3015:3015"
+    env_file: .envDev
+    container_name: catalystbuild.postman.info.logger.server.latest
+    mem_limit: 256m
+    cpus: 0.5
+    networks:
+      - catalyst_network
+
+networks:
+  catalyst_network:
+    driver: bridge
